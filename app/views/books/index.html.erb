@@ -1,0 +1,14 @@
+<h1>Recent Searches</h1>
+ <%= link_to 'New book', new_book_path %>
+<table>
+  <tr>
+    <th>ISBN</th>
+  </tr>
+ 
+  <% @book.each do |book| %>
+    <tr>
+      <td><%= book.isbnnumber %></td>
+      <td><%= link_to 'Show', book_path(book) %></td>
+    </tr>
+  <% end %>
+</table>
