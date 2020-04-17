@@ -1,6 +1,45 @@
 <p align = "center">
-    <strong>ISBN</strong>
-    <%= @book.isbnnumber %>
+    <!--<strong>ISBN</strong>-->
+    
+<%= 
+ require "nokogiri"
+ require 'open-uri'
+
+     barnesURL = 'https://www.barnesandnoble.com/w/1119329386?ean=' + @book.isbnnumber 
+     barnesandnoble = Nokogiri::HTML(open(barnesURL))
+     barnesandnoble_name = barnesandnoble.css('h1.pdp-header-title').text
+     barnesandnoble_price = barnesandnoble.css('#pdp-cur-price-BuyNew').text
+     if(barnesandnoble_price == "")
+         barnesandnoble_price = barnesandnoble.css('#pdp-cur-price').text[ /\d+\.\d{2}/ ] 
+    end
+    
+    
+    
+ biblioURL = 'https://www.biblio.com/' + @book.isbnnumber
+ biblio = Nokogiri::HTML(open(biblioURL))
+ # biblio_name = biblio.css('span.title').text
+ biblio_price = biblio.css('span.item-price').text[ /\d+\.\d{2}/ ]
+ 
+
+
+ betterworldURL = 'https://www.betterworldbooks.com/product/detail/' + @book.isbnnumber 
+ betterworldbooks = Nokogiri::HTML(open(betterworldURL)) 
+#   betterworldbooks_name = betterworldbooks.css('html body div#detailApp.bg-light-gray div.container-fluid.bg-white div.col-xs-8.col-sm-6.col-md-6 h1.title').text 
+ betterworldbooks_price = betterworldbooks.css('html body div#detailApp.bg-light-gray div.container-fluid.bg-white div.col-xs-12.col-sm-4.col-md-3 div.panel.panel-default div.panel-body h3').text[ /\d+\.\d{2}/ ]
+
+"Book: #{barnesandnoble_name}"
+ 
+%> <br>
+<%= 
+"Barnes & Noble price: #{barnesandnoble_price}"
+%> <br> <%=
+"Biblio price: #{biblio_price}"
+%> <br> <%=
+"Better World Books price: #{betterworldbooks_price}"
+ %><br>
+
+
+   
     <%= link_to 'Back', books_path %>
 </p>
 
