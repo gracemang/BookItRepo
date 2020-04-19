@@ -6,6 +6,8 @@ Feature: Find a book
   
   Scenario: As a student I want to be able to navigate from the homepage to the textbook I am looking for
     Given I am on the homepage
+    When I click in the "Enter ISBN Number" box
+    Then I type an ISBN in the "Enter ISBN Number" box
     When I click on the "Search" box
     Then I should be on the "ISBN" page
     When I click on the "Back" link
