@@ -1,5 +1,10 @@
 <h1 align="center">BookIt</h1>
+
+<br>
 <p align = "center">Free textbook finder for all of your courses</p>
+
+<br>
+<br>
 
 
 <%= form_for :book, url: books_path do |f|%>
@@ -19,12 +24,20 @@
 
 <p align = "center">
     <%= f.text_field :isbnnumber, placeholder: "Enter ISBN Number"%>
-    <%= link_to 'Recent Searches', books_path %>
+    <%= f.submit "Search" %>
+    
 </p>    
 
+<br>
+<br>
+
 <p align = "center" >
-    <%= f.submit "Search" %>
+    <%= link_to 'Recent Searches', books_path %>
+    
 </p>
+
+<br>
+<br>
 
 <p align = "center">   
     <% if current_user %>
