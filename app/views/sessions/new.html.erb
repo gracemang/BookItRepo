@@ -1,0 +1,24 @@
+<p id="alert"><%= alert %></p>
+<h1>Login</h1>
+<%= form_tag sessions_path do |form| %>
+<div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+</div>
+<div class="field">
+    <%= label_tag :password %>
+    <%= text_field_tag :password %>
+</div>
+<div class="actions">
+    <%= submit_tag "Login" %>
+</div>
+<% end %>
+ 
+<style>
+    body{
+        background-image: url('http://www.allwhitebackground.com/images/6/Book-Background-Photo.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>

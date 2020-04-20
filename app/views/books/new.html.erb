@@ -19,12 +19,23 @@
 
 <p align = "center">
     <%= f.text_field :isbnnumber, placeholder: "Enter ISBN Number"%>
-    <%= link_to 'Back', books_path %>
+    <%= link_to 'Recent Searches', books_path %>
 </p>    
 
 <p align = "center" >
     <%= f.submit "Search" %>
 </p>
+
+<p align = "center">   
+    <% if current_user %>
+    Logged in as <%= current_user.name %>
+    <%= link_to "Log Out", logout_path %>
+    <% else %>
+    <%= link_to "Sign Up", signup_path %> or
+    <%= link_to "Log In", login_path %>
+    <% end %> 
+</p>
+
 <style>
     body{
         background-image: url('https://cdn.wallpapersafari.com/52/31/mQgWhS.jpg');
